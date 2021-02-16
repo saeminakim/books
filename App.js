@@ -15,24 +15,76 @@ import WishList from './components/WishList'
 
 // https://ionicons.com/
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-
-import rootReducer from './redux/reducers';
-
-const store = createStore(rootReducer);
+import JournalDetails from './components/JournalDetails';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
+const JournalStack = createStackNavigator();
+const SearchStack = createStackNavigator();
+const WishStack = createStackNavigator();
 
 
 const HomeStackScreen = () => {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={Home} options={{title:"Home", headerTitleAlign:"center"}} />
-      <HomeStack.Screen name="Details" component={Details} options={{title:"Details", headerTitleAlign:"center"}}  />
+    <HomeStack.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: '#2F3C7E',
+      },
+      headerTintColor: '#FBEAEB',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}>
+      <HomeStack.Screen name="Home" component={Home} options={{title:"Home", headerTitleAlign:"center", }} />
     </HomeStack.Navigator>
+  )
+}
+
+const JournalStackScreen = () => {
+  return (
+    <JournalStack.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: '#2F3C7E',
+      },
+      headerTintColor: '#FBEAEB',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}>
+      <JournalStack.Screen name="JournalList" component={JournalList} options={{title:"독서노트", headerTitleAlign:"center"}}  />
+      <JournalStack.Screen name="JournalDetails" component={JournalDetails} options={{title:"독서노트", headerTitleAlign:"center"}}  />
+    </JournalStack.Navigator>
+  )
+}
+
+const SearchStackScreen = () => {
+  return (
+    <SearchStack.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: '#2F3C7E',
+      },
+      headerTintColor: '#FBEAEB',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}>
+      <SearchStack.Screen name="Search" component={Search} options={{title:"도서 검색", headerTitleAlign:"center"}}  />
+    </SearchStack.Navigator>
+  )
+}
+const WishStackScreen = () => {
+  return (
+    <WishStack.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: '#2F3C7E',
+      },
+      headerTintColor: '#FBEAEB',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}>
+      <WishStack.Screen name="WishList" component={WishList} options={{title:"읽고 싶은 책", headerTitleAlign:"center"}}  />
+    </WishStack.Navigator>
   )
 }
 
@@ -42,7 +94,6 @@ const screenOptions = ({ route }) => ({
     let iconName;
 
     switch(route.name){
-      // focus가 있으면 'home' 아이콘, 없으면 'home-outline'
       case 'Home':
         iconName = focused
           ? 'home'
@@ -50,13 +101,18 @@ const screenOptions = ({ route }) => ({
         break;
       case 'JournalList':
         iconName = focused
-          ? 'list'
-          : 'list-outline'; 
+          ? 'book'
+          : 'book-outline'; 
+        break;
+      case 'Search':
+        iconName = focused
+          ? 'search'
+          : 'search-outline'; 
         break;
       case 'WishList':
         iconName = focused
-          ? 'checkmark'
-          : 'checkmark-outline'; 
+          ? 'bookmark'
+          : 'bookmark-outline'; 
         break;
     }
 
@@ -66,20 +122,23 @@ const screenOptions = ({ route }) => ({
 })
 
 const tabBarOptions= {
-  activeTintColor: 'tomato',
-  inactiveTintColor: 'gray',
+  activeTintColor: '#FBEAEB',
+  inactiveTintColor: '#2f3c7e',
+  activeBackgroundColor: '#2f3c7e',
+  inactiveBackgroundColor: '#FBEAEB'
 }
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <SafeAreaProvider>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
-            <Tab.Screen name="Home" component={HomeStackScreen}/>
-          </Tab.Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
-    </Provider>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
+          <Tab.Screen name="Home" component={HomeStackScreen}/>
+          <Tab.Screen name="JournalList" component={JournalStackScreen}/>
+          <Tab.Screen name="Search" component={SearchStackScreen}/>
+          <Tab.Screen name="WishList" component={WishStackScreen}/>
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
