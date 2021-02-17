@@ -12,10 +12,16 @@ import Home from './components/Home'
 import JournalList from './components/JournalList'
 import Search from './components/Search'
 import WishList from './components/WishList'
+import JournalDetails from './components/JournalDetails';
 
 // https://ionicons.com/
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import JournalDetails from './components/JournalDetails';
+
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import rootReducer from './redux/reducers';
+
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
@@ -23,6 +29,7 @@ const JournalStack = createStackNavigator();
 const SearchStack = createStackNavigator();
 const WishStack = createStackNavigator();
 
+const store = createStore(rootReducer);
 
 const HomeStackScreen = () => {
   return (
@@ -51,7 +58,7 @@ const JournalStackScreen = () => {
         fontWeight: 'bold',
       },
     }}>
-      <JournalStack.Screen name="JournalList" component={JournalList} options={{title:"독서노트", headerTitleAlign:"center"}}  />
+      <JournalStack.Screen name="JournalList" component={JournalList} options={{title:"책목록", headerTitleAlign:"center"}}  />
       <JournalStack.Screen name="JournalDetails" component={JournalDetails} options={{title:"독서노트", headerTitleAlign:"center"}}  />
     </JournalStack.Navigator>
   )
@@ -130,15 +137,17 @@ const tabBarOptions= {
 
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
-          <Tab.Screen name="Home" component={HomeStackScreen}/>
-          <Tab.Screen name="JournalList" component={JournalStackScreen}/>
-          <Tab.Screen name="Search" component={SearchStackScreen}/>
-          <Tab.Screen name="WishList" component={WishStackScreen}/>
-        </Tab.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
+            <Tab.Screen name="Home" component={HomeStackScreen}/>
+            <Tab.Screen name="JournalList" component={JournalStackScreen}/>
+            <Tab.Screen name="Search" component={SearchStackScreen}/>
+            <Tab.Screen name="WishList" component={WishStackScreen}/>
+          </Tab.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </Provider>
   );
 }

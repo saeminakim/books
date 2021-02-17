@@ -1,7 +1,9 @@
 import React, { useState, useCallback } from 'react';
+
 import { View } from 'react-native';
 
 import { SearchBar } from 'react-native-elements';
+import SearchList from './SearchList'
 
 const Search = ({navigation}) => {
 
@@ -10,7 +12,7 @@ const Search = ({navigation}) => {
   const handleSearch = useCallback((search)=>{
     console.log(search);
     setKeyword(search);
-  })
+  }, []);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -22,7 +24,7 @@ const Search = ({navigation}) => {
         // 입력하는 값을 계속 value 값으로 넣어줘야함
         value={keyword}
       />
-
+      <SearchList navigation={navigation} keyword={keyword}></SearchList>    
     </View>
   );
 }

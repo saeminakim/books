@@ -23,5 +23,22 @@ export const LISTDATA = [
     thumbnail: "https://search1.kakaocdn.net/thumb/C116x164.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F541640%3Ftimestamp%3D20210215145733%3Fmoddttm=202102161007",
     author: '무라카미 하루키',
   },
- 
+  {
+    id: 5,
+    title: '사피엔스',
+    thumbnail: "https://search1.kakaocdn.net/thumb/C116x164.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F521598%3Ftimestamp%3D20210216142403%3Fmoddttm=202102171218",
+    author: '유발 하라리',
+  }, 
+  {
+    id: 6,
+    title: '생각의 탄생',
+    thumbnail: "https://search1.kakaocdn.net/thumb/C116x164.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F1448032%3Ftimestamp%3D20210216142915%3Fmoddttm=202102171221",
+    author: '로버트 루트번스타인 ,  미셸 루트번스타인',
+  }, 
+  {
+    id: 7,
+    title: '고래',
+    thumbnail: "https://search1.kakaocdn.net/thumb/C116x164.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F1158221%3Ftimestamp%3D20210216142914%3Fmoddttm=202102171222",
+    author: '천명관',
+  }, 
 ]
