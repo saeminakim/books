@@ -16,8 +16,25 @@ const styles = StyleSheet.create({
   },
   thumbnail: {
     width: 55,
-    height: 70
-  }  
+    height: 70,
+    justifyContent: 'center'
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },  
+  container: {
+    flex: 1,
+    flexDirection: "column"
+  },
+  text: {
+    color: '#FBEAEB',
+    fontSize: 35,
+    fontWeight: "bold",
+    textAlign: 'center',
+    backgroundColor: "#000000a0"
+  }
 })
 
 export default styles;

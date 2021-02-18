@@ -12,7 +12,8 @@ import Home from './components/Home'
 import JournalList from './components/JournalList'
 import Search from './components/Search'
 import WishList from './components/WishList'
-import JournalDetails from './components/JournalDetails';
+import WishDetails from './components/WishDetails'
+import AddJournal from './components/AddJournal';
 
 // https://ionicons.com/
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -21,7 +22,6 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import rootReducer from './redux/reducers';
-
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
@@ -59,7 +59,7 @@ const JournalStackScreen = () => {
       },
     }}>
       <JournalStack.Screen name="JournalList" component={JournalList} options={{title:"책목록", headerTitleAlign:"center"}}  />
-      <JournalStack.Screen name="JournalDetails" component={JournalDetails} options={{title:"독서노트", headerTitleAlign:"center"}}  />
+      <JournalStack.Screen name="AddJournal" component={AddJournal} options={{title:"새 글 쓰기", headerTitleAlign:"center"}}  />
     </JournalStack.Navigator>
   )
 }
@@ -90,7 +90,9 @@ const WishStackScreen = () => {
         fontWeight: 'bold',
       },
     }}>
-      <WishStack.Screen name="WishList" component={WishList} options={{title:"읽고 싶은 책", headerTitleAlign:"center"}}  />
+      <WishStack.Screen name="읽을 책" component={WishList} options={{title:"읽고 싶은 책", headerTitleAlign:"center"}}  />
+      {/* <WishStack.Screen name="JournalList" component={JournalList} options={{title:"책목록", headerTitleAlign:"center"}}  /> */}
+      <WishStack.Screen name="WishDetails" component={WishDetails} options={{title:"읽고 싶은 책", headerTitleAlign:"center"}}  />
     </WishStack.Navigator>
   )
 }
@@ -116,7 +118,7 @@ const screenOptions = ({ route }) => ({
           ? 'search'
           : 'search-outline'; 
         break;
-      case 'WishList':
+      case '읽을 책':
         iconName = focused
           ? 'bookmark'
           : 'bookmark-outline'; 
@@ -143,8 +145,8 @@ export default function App() {
           <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
             <Tab.Screen name="Home" component={HomeStackScreen}/>
             <Tab.Screen name="JournalList" component={JournalStackScreen}/>
+            <Tab.Screen name="읽을 책" component={WishStackScreen}/>
             <Tab.Screen name="Search" component={SearchStackScreen}/>
-            <Tab.Screen name="WishList" component={WishStackScreen}/>
           </Tab.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>
