@@ -1,13 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
-import { LISTDATA } from '../shared/list'
+import { WISHDATA } from '../shared/wishlist'
 
 // https://reactnativeelements.com/docs
 import { ListItem } from 'react-native-elements'
 
 const SearchList = ({ navigation, keyword }) => {
 
-  let list = LISTDATA;
+  let list = WISHDATA;
   console.log("--search list--")
   console.log(list)
 
@@ -19,7 +19,7 @@ const SearchList = ({ navigation, keyword }) => {
 
     return(
       list.map((item, i) => (
-        <ListItem containerStyle={{width:"80%"}} key={i} bottomDivider onPress={()=>{navigation.navigate('Details', {id: item.id})}}>
+        <ListItem containerStyle={{width:"90%"}} key={i} bottomDivider onPress={()=>{navigation.navigate('WishDetails', {id: item.id})}}>
           <ListItem.Content>
             <ListItem.Title>{item.title}</ListItem.Title>
           </ListItem.Content>
