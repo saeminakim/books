@@ -13,6 +13,7 @@ import JournalList from './components/JournalList'
 import Search from './components/Search'
 import WishList from './components/WishList'
 import WishDetails from './components/WishDetails'
+import JournalDetails from './components/JournalDetails';
 import AddJournal from './components/AddJournal';
 
 // https://ionicons.com/
@@ -58,7 +59,8 @@ const JournalStackScreen = () => {
         fontWeight: 'bold',
       },
     }}>
-      <JournalStack.Screen name="JournalList" component={JournalList} options={{title:"책목록", headerTitleAlign:"center"}}  />
+      <JournalStack.Screen name="마음산.책" component={JournalList} options={{title:"마음산.책", headerTitleAlign:"center"}}  />
+      <JournalStack.Screen name="JournalDetails" component={JournalDetails} options={{title:"독서노트", headerTitleAlign:"center"}}  />
       <JournalStack.Screen name="AddJournal" component={AddJournal} options={{title:"새 글 쓰기", headerTitleAlign:"center"}}  />
     </JournalStack.Navigator>
   )
@@ -75,7 +77,7 @@ const SearchStackScreen = () => {
         fontWeight: 'bold',
       },
     }}>
-      <SearchStack.Screen name="Search" component={Search} options={{title:"도서 검색", headerTitleAlign:"center"}}  />
+      <SearchStack.Screen name="검색" component={Search} options={{title:"도서 검색", headerTitleAlign:"center"}}  />
     </SearchStack.Navigator>
   )
 }
@@ -90,9 +92,8 @@ const WishStackScreen = () => {
         fontWeight: 'bold',
       },
     }}>
-      <WishStack.Screen name="읽을 책" component={WishList} options={{title:"읽고 싶은 책", headerTitleAlign:"center"}}  />
-      {/* <WishStack.Screen name="JournalList" component={JournalList} options={{title:"책목록", headerTitleAlign:"center"}}  /> */}
-      <WishStack.Screen name="WishDetails" component={WishDetails} options={{title:"읽고 싶은 책", headerTitleAlign:"center"}}  />
+      <WishStack.Screen name="마음살.책" component={WishList} options={{title:"마음살.책", headerTitleAlign:"center"}}  />
+      <WishStack.Screen name="WishDetails" component={WishDetails} options={{title:"책 소개", headerTitleAlign:"center"}}  />
     </WishStack.Navigator>
   )
 }
@@ -108,24 +109,23 @@ const screenOptions = ({ route }) => ({
           ? 'home'
           : 'home-outline';
         break;
-      case 'JournalList':
+      case '마음산.책':
         iconName = focused
           ? 'book'
           : 'book-outline'; 
         break;
-      case 'Search':
+      case '검색':
         iconName = focused
           ? 'search'
           : 'search-outline'; 
         break;
-      case '읽을 책':
+      case '마음살.책':
         iconName = focused
-          ? 'bookmark'
-          : 'bookmark-outline'; 
+          ? 'library'
+          : 'library-outline'; 
         break;
     }
 
-    // You can return any component that you like here!
     return <Ionicons name={iconName} size={size} color={color} />;
   },
 })
@@ -144,9 +144,9 @@ export default function App() {
         <NavigationContainer>
           <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
             <Tab.Screen name="Home" component={HomeStackScreen}/>
-            <Tab.Screen name="JournalList" component={JournalStackScreen}/>
-            <Tab.Screen name="읽을 책" component={WishStackScreen}/>
-            <Tab.Screen name="Search" component={SearchStackScreen}/>
+            <Tab.Screen name="마음산.책" component={JournalStackScreen}/>
+            <Tab.Screen name="마음살.책" component={WishStackScreen}/>
+            <Tab.Screen name="검색" component={SearchStackScreen}/>
           </Tab.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

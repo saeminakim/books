@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   thumbnail: {
     width: 55,
-    height: 70,
+    height: 75,
     justifyContent: 'center'
   },
   image: {
@@ -34,7 +34,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: 'center',
     backgroundColor: "#000000a0"
-  }
+  },
+  textInputStyle: {
+    textAlign: 'center',
+    borderWidth: 1,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+
 })
 
 export default styles;
