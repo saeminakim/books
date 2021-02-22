@@ -4,7 +4,7 @@ import { SafeAreaView, ImageBackground, View, TextInput } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from '../style/style';
 
-const image = require('../img/books-1617327_1920.jpg');
+const image = {uri: "https://helloimlily-vueapp.s3.ap-northeast-2.amazonaws.com/books-1617327_1920.jpg"};
 
 const Home = () => {
 

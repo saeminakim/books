@@ -5,7 +5,7 @@ import styles from '../style/style';
 
 const JournalDetails = ({navigation, route}) => {
 
-  const image = require('../img/notepad_nobg.png');
+  const image = { uri: "https://helloimlily-vueapp.s3.ap-northeast-2.amazonaws.com/notepad_nobg.png" };
 
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>

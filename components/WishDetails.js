@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { ScrollView, Text } from 'react-native';
 
 import { WISHDATA } from '../shared/wishlist';
@@ -9,17 +9,29 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addList, removeList } from '../redux/actions';
 
+import api from '../api/wishdata'
+
 const WishDetails = ({route, navigation}) => {
 
   const { id } = route.params;
 
-  const item = WISHDATA.filter(item => item.id == id)[0];
+  // const item = WISHDATA.filter(item => item.id == id)[0];
+  const [item, setItem] = useState({});
 
   const dispatch = useDispatch();
 
   const lists = useSelector(state => state.actions);
 
   const isExistedList = lists.filter(item => item.id == id).length > 0 ? true : false;
+
+  const getDetails = useCallback(async () => {
+    const result = await api.get(id);
+    setItem(result.data);
+  }, [])
+
+  useEffect(() =>{
+    getDetails();
+  }, [])
 
 
   return (  
