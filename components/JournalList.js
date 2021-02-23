@@ -11,22 +11,19 @@ const JournalList = ({navigation}) => {
 
   const lists = useSelector(state => state.actions);
 
-  // if (lists == ""){
-  //   return (
-  //     <View style={{
-  //       flex: 1,
-  //       justifyContent: "center",
-  //       alignItems: "center"
-  //     }}>
-  //       <Text>아직 읽은 책이 없어요😮</Text>
-  //     </View>
-  //   );
-  // }
-
   const dispatch = useDispatch();
 
   return(
-    <View style={{flex:1}}>
+    <View style={{flex:1, backgroundColor: '#eceef8'}}>
+      { lists == "" && 
+        <View style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center"
+        }}>
+         <Text style={styles.title}>아직 읽은 책이 없어요😮</Text>
+        </View> }
+      { lists &&
       <ScrollView contentContainerStyle={{ flexGrow: 1, alignItems: "center", justifyContent: 'center' }}>
       {
         lists.map((item, i) => (
@@ -41,6 +38,7 @@ const JournalList = ({navigation}) => {
         ))
       }
       </ScrollView>
+      }
     </View>
   )
 }

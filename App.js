@@ -11,7 +11,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Home from './components/Home'
 import JournalList from './components/JournalList'
 import Search from './components/Search'
-import WishList from './components/WishList'
+import List from './components/ListContainer'
 import WishDetails from './components/WishDetails'
 import JournalDetails from './components/JournalDetails';
 import AddJournal from './components/AddJournal';
@@ -28,7 +28,7 @@ const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
 const JournalStack = createStackNavigator();
 const SearchStack = createStackNavigator();
-const WishStack = createStackNavigator();
+const ListStack = createStackNavigator();
 
 const store = createStore(rootReducer);
 
@@ -78,12 +78,13 @@ const SearchStackScreen = () => {
       },
     }}>
       <SearchStack.Screen name="검색" component={Search} options={{title:"도서 검색", headerTitleAlign:"center"}}  />
+      <SearchStack.Screen name="WishDetails" component={WishDetails} options={{title:"책 소개", headerTitleAlign:"center"}}  />
     </SearchStack.Navigator>
   )
 }
-const WishStackScreen = () => {
+const ListStackScreen = () => {
   return (
-    <WishStack.Navigator screenOptions={{
+    <ListStack.Navigator screenOptions={{
       headerStyle: {
         backgroundColor: '#2F3C7E',
       },
@@ -92,9 +93,9 @@ const WishStackScreen = () => {
         fontWeight: 'bold',
       },
     }}>
-      <WishStack.Screen name="마음살.책" component={WishList} options={{title:"마음살.책", headerTitleAlign:"center"}}  />
-      <WishStack.Screen name="WishDetails" component={WishDetails} options={{title:"책 소개", headerTitleAlign:"center"}}  />
-    </WishStack.Navigator>
+      <ListStack.Screen name="마음살.책" component={List} options={{title:"마음살.책", headerTitleAlign:"center"}}  />
+      <ListStack.Screen name="WishDetails" component={WishDetails} options={{title:"책 소개", headerTitleAlign:"center"}}  />
+    </ListStack.Navigator>
   )
 }
 
@@ -145,7 +146,7 @@ export default function App() {
           <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
             <Tab.Screen name="Home" component={HomeStackScreen}/>
             <Tab.Screen name="마음산.책" component={JournalStackScreen}/>
-            <Tab.Screen name="마음살.책" component={WishStackScreen}/>
+            <Tab.Screen name="마음살.책" component={ListStackScreen}/>
             <Tab.Screen name="검색" component={SearchStackScreen}/>
           </Tab.Navigator>
         </NavigationContainer>

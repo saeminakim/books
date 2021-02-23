@@ -1,30 +1,10 @@
-// 위시리스트(읽을 책)에서 선택하면 저널리스트(읽은 책)로 들어가게 기능 구현하기 
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 
 import styles from '../style/style';
-import api from '../api/wishlist'
 
-const WishList = ({ navigation }) => {
-
-  const [list, setList] = useState([]);
-
-  const getList = useCallback(async () => {
-    const result = await api.list();
-    setList(result.data);
-  }, [])
-
-  useEffect(() => {
-    const unsubscribe = navigation.addListener(
-      'focus',
-      () => {
-        getList();
-      }
-    )
-    return unsubscribe;
-  }, [navigation])
-
+const List = ({ navigation, list }) => {
   return (
     <View style={{flex: 1, backgroundColor: '#eceef8'}}>
       <ScrollView 
@@ -51,4 +31,4 @@ const WishList = ({ navigation }) => {
   );
 }
 
-export default WishList;
+export default List;

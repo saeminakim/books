@@ -14,7 +14,7 @@ const Search = ({navigation}) => {
   }, []);
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#eceef8'}}>
       <SearchBar platform={"android"} containerStyle={{width:'80%'}}
         placeholder="검색어를 입력하세요"
         onChangeText={handleSearch}

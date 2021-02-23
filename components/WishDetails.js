@@ -1,15 +1,13 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { ScrollView, Text } from 'react-native';
 
-import { WISHDATA } from '../shared/wishlist';
-
 import { Card, Avatar, Icon, Button } from 'react-native-elements';
 import styles from '../style/style';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addList, removeList } from '../redux/actions';
 
-import api from '../api/wishdata'
+import api from '../api/wishlist'
 
 const WishDetails = ({route, navigation}) => {
 
@@ -35,7 +33,7 @@ const WishDetails = ({route, navigation}) => {
 
 
   return (  
-    <ScrollView>
+    <ScrollView style={{backgroundColor: '#eceef8'}}>
       <Card>
       <Card.Title style={styles.title}>{item.title}</Card.Title>  
         <Avatar style={{width: 100, height: 130}} source={{uri:item.thumbnail}} />       
@@ -43,7 +41,7 @@ const WishDetails = ({route, navigation}) => {
           <Text>{item.contents}</Text>
         {
           isExistedList
-            ?
+            ? 
             <Button 
               onPress={() => {dispatch(removeList(id))}}
               type='clear'
