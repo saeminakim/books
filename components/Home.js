@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { SafeAreaView, ImageBackground, View, TextInput } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, SafeAreaView, ImageBackground, View, TextInput } from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from '../style/style';
