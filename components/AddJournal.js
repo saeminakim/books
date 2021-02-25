@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 
-const AddJournal = ({navigation }) => {
+const AddJournal = ({ navigation }) => {
 
   const [postText, setPostText] = React.useState('');
 

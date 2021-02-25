@@ -27,7 +27,7 @@ const JournalList = ({navigation}) => {
       <ScrollView contentContainerStyle={{ flexGrow: 1, alignItems: "center", justifyContent: 'center' }}>
       {
         lists.map((item, i) => (
-          <ListItem containerStyle={{width:"90%"}} key={i} onPress={()=>{navigation.navigate("JournalDetails", {id: item.id})}}>
+          <ListItem containerStyle={{width:"90%"}} key={i} onPress={()=>{navigation.navigate("JournalDetails", item)}}>
             <Avatar source={{uri: item.thumbnail}} style={styles.thumbnail}/>
             <ListItem.Content>
               <ListItem.Title style={styles.title}>{item.title}</ListItem.Title>

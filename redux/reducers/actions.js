@@ -15,6 +15,10 @@ const actions = (state = [], action) => {
       return [
         ...action.payload
       ]
+    case 'ADD_JOURNAL_SUCCEEDED':
+      return [
+        ...action.payload
+      ]
     default:
       return state
   }

@@ -24,6 +24,8 @@ const WishDetails = ({route, navigation}) => {
 
   const getDetails = useCallback(async () => {
     const result = await api.get(id);
+    console.log("-------api-------")
+    console.log(result.data.post);
     setItem(result.data);
   }, [])
 
