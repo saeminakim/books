@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import messaging from '@react-native-firebase/messaging';
 
 import Home from './Home'
 import JournalList from './JournalList'
@@ -133,13 +134,13 @@ const tabBarOptions= {
 }
 
 export default function Main() {
+
+  const alert = useSelector(state => state.alert)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch({type: "FETCH_LISTS"})
   }, [])
-  
-  const alert = useSelector(state => state.alert)
 
   if(alert.isShow) {
     Alert.alert(
@@ -151,6 +152,22 @@ export default function Main() {
       { cancelable: false }
     );
   }
+
+  useEffect(() => {
+
+    messaging().getToken()
+    .then(token => {
+      console.log("--token--");
+      console.log(token);
+    }); 
+
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
+  }, []);
+
   return (
       <SafeAreaProvider>
         <NavigationContainer>
