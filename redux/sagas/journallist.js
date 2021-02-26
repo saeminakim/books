@@ -24,17 +24,11 @@ function* fetchLists(action) {
   yield put({type:"FETCH_LISTS_SUCCEEDED", payload: result.data})
 }
 
-function* addJournal(action){
-  const result = yield call(api.put, action.payload)
-  yield put({type:"ADD_JOURNAL_SUCCEEDED", payload: action.payload})
-}
-
 function* listsSaga(){
 
   yield takeEvery("ADD_LIST", addList);
   yield takeEvery("REMOVE_LIST", removeList)
   yield takeLatest("FETCH_LISTS", fetchLists);
-  yield takeEvery("ADD_JOURNAL", addJournal)
 
 }
 
