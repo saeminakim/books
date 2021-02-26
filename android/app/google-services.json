@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "629633724778",
+    "project_id": "notification-lecture-dc8e8",
+    "storage_bucket": "notification-lecture-dc8e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629633724778:android:c1d12c5e2f4ee5bc84b513",
+        "android_client_info": {
+          "package_name": "com.books"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629633724778-skm2i2q8jikpj5v97gct4uudfjsp11pm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBCOj5WVHO3qM4h1eDAzF4hEmw_bVyIVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629633724778-skm2i2q8jikpj5v97gct4uudfjsp11pm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
