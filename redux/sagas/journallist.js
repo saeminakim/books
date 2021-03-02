@@ -24,11 +24,20 @@ function* fetchLists(action) {
   yield put({type:"FETCH_LISTS_SUCCEEDED", payload: result.data})
 }
 
+function* updateList(action){
+  console.log("saga ---------- action.payload")
+  console.log(action.payload)
+  const result = yield call(api.update, action.payload.id, action.payload.post)
+  console.log(result)
+  yield put({type: "UPDATE_LIST_SUCCEEDED", payload: {id: action.payload.id, post: action.payload.post}});
+}
+
 function* listsSaga(){
 
   yield takeEvery("ADD_LIST", addList);
   yield takeEvery("REMOVE_LIST", removeList)
   yield takeLatest("FETCH_LISTS", fetchLists);
+  yield takeEvery("UPDATE_LIST", updateList);
 
 }
 

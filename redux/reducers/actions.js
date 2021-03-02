@@ -15,6 +15,14 @@ const actions = (state = [], action) => {
       return [
         ...action.payload
       ]
+    case 'UPDATE_LIST_SUCCEEDED':
+      return [
+        ...state, 
+        {
+          id: action.payload.id,
+          post: action.payload.post
+        }            
+      ]
     default:
       return state
   }
