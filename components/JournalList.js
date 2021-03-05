@@ -10,6 +10,9 @@ import styles from '../style/style';
 const JournalList = ({navigation, route}) => {
 
   const lists = useSelector(state => state.actions);
+  const listLength = lists.length;
+  console.log("lists.length");
+  console.log(listLength);
 
   const dispatch = useDispatch();
 

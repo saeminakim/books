@@ -14,6 +14,7 @@ import List from './ListContainer'
 import WishDetails from './WishDetails'
 import JournalDetails from './JournalDetails';
 import AddJournal from './AddJournal';
+import HWTest from './HWTest'
 
 // https://ionicons.com/
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -120,6 +121,11 @@ const screenOptions = ({ route }) => ({
           ? 'library'
           : 'library-outline'; 
         break;
+      case 'HWTest':
+        iconName = focused
+          ? 'hardware-chip'
+          : 'hardware-chip-outline'; 
+        break;  
     }
 
     return <Ionicons name={iconName} size={size} color={color} />;
@@ -176,6 +182,7 @@ export default function Main() {
             <Tab.Screen name="마음산.책" component={JournalStackScreen}/>
             <Tab.Screen name="마음살.책" component={ListStackScreen}/>
             <Tab.Screen name="검색" component={SearchStackScreen}/>
+            <Tab.Screen name="HWTest" component={HWTest} />
           </Tab.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

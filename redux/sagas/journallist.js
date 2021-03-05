@@ -28,7 +28,6 @@ function* updateList(action){
   console.log("saga ---------- action.payload")
   console.log(action.payload)
   const result = yield call(api.update, action.payload.id, action.payload.post)
-  console.log(result)
   yield put({type: "UPDATE_LIST_SUCCEEDED", payload: {id: action.payload.id, post: action.payload.post}});
 }
 

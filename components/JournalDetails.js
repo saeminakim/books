@@ -16,13 +16,7 @@ const JournalDetails = ({navigation, route}) => {
   const [item, setItem] = useState();
   const dispatch = useDispatch();
 
-  // const tasks = useSelector(state => state.actions);
-  // console.log("----------- details tasks");
-  // console.log(detail.post);
-
   const isExistedPost = detail.post.length > 1 ? true : false;
-  console.log("isExistedPost")
-  console.log(isExistedPost);
 
   const getItems = useCallback(async () => {
     const result = await api.update(id);
