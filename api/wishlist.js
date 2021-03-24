@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { baseUrl } from './_env'
 
-export default{
+export default {
   // http:// 내ec2주소:3000/list
   list: () => axios.get(`${baseUrl}/wishlist`),
   // http:// 내ec2주소:3000/list/id

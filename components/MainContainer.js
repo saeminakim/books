@@ -39,7 +39,7 @@ const HomeStackScreen = () => {
         fontWeight: 'bold',
       },
     }}>
-      <HomeStack.Screen name="Home" component={Home} options={{title:"Home", headerTitleAlign:"center", }} />
+      <HomeStack.Screen name="Home" component={Home} options={{ title: "Home", headerTitleAlign: "center", }} />
     </HomeStack.Navigator>
   )
 }
@@ -55,9 +55,9 @@ const JournalStackScreen = () => {
         fontWeight: 'bold',
       },
     }}>
-      <JournalStack.Screen name="마음산.책" component={JournalList} options={{title:"마음산.책", headerTitleAlign:"center"}}  />
-      <JournalStack.Screen name="JournalDetails" component={JournalDetails} options={{title:"독서노트", headerTitleAlign:"center"}}  />
-      <JournalStack.Screen name="AddJournal" component={AddJournal} options={{title:"새 글 쓰기", headerTitleAlign:"center"}}  />
+      <JournalStack.Screen name="마음산.책" component={JournalList} options={{ title: "마음산.책", headerTitleAlign: "center" }} />
+      <JournalStack.Screen name="JournalDetails" component={JournalDetails} options={{ title: "독서노트", headerTitleAlign: "center" }} />
+      <JournalStack.Screen name="AddJournal" component={AddJournal} options={{ title: "새 글 쓰기", headerTitleAlign: "center" }} />
     </JournalStack.Navigator>
   )
 }
@@ -73,8 +73,8 @@ const SearchStackScreen = () => {
         fontWeight: 'bold',
       },
     }}>
-      <SearchStack.Screen name="검색" component={Search} options={{title:"도서 검색", headerTitleAlign:"center"}}  />
-      <SearchStack.Screen name="WishDetails" component={WishDetails} options={{title:"책 소개", headerTitleAlign:"center"}}  />
+      <SearchStack.Screen name="검색" component={Search} options={{ title: "도서 검색", headerTitleAlign: "center" }} />
+      <SearchStack.Screen name="WishDetails" component={WishDetails} options={{ title: "책 소개", headerTitleAlign: "center" }} />
     </SearchStack.Navigator>
   )
 }
@@ -89,8 +89,8 @@ const ListStackScreen = () => {
         fontWeight: 'bold',
       },
     }}>
-      <ListStack.Screen name="마음살.책" component={List} options={{title:"마음살.책", headerTitleAlign:"center"}}  />
-      <ListStack.Screen name="WishDetails" component={WishDetails} options={{title:"책 소개", headerTitleAlign:"center"}}  />
+      <ListStack.Screen name="마음살.책" component={List} options={{ title: "마음살.책", headerTitleAlign: "center" }} />
+      <ListStack.Screen name="WishDetails" component={WishDetails} options={{ title: "책 소개", headerTitleAlign: "center" }} />
     </ListStack.Navigator>
   )
 }
@@ -100,7 +100,7 @@ const screenOptions = ({ route }) => ({
   tabBarIcon: ({ focused, color, size }) => {
     let iconName;
 
-    switch(route.name){
+    switch (route.name) {
       case 'Home':
         iconName = focused
           ? 'home'
@@ -109,30 +109,30 @@ const screenOptions = ({ route }) => ({
       case '마음산.책':
         iconName = focused
           ? 'book'
-          : 'book-outline'; 
+          : 'book-outline';
         break;
       case '검색':
         iconName = focused
           ? 'search'
-          : 'search-outline'; 
+          : 'search-outline';
         break;
       case '마음살.책':
         iconName = focused
           ? 'library'
-          : 'library-outline'; 
+          : 'library-outline';
         break;
       case 'HWTest':
         iconName = focused
           ? 'hardware-chip'
-          : 'hardware-chip-outline'; 
-        break;  
+          : 'hardware-chip-outline';
+        break;
     }
 
     return <Ionicons name={iconName} size={size} color={color} />;
   },
 })
 
-const tabBarOptions= {
+const tabBarOptions = {
   activeTintColor: '#FBEAEB',
   inactiveTintColor: '#2f3c7e',
   activeBackgroundColor: '#2f3c7e',
@@ -145,15 +145,15 @@ export default function Main() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({type: "FETCH_LISTS"})
+    dispatch({ type: "FETCH_LISTS" })
   }, [])
 
-  if(alert.isShow) {
+  if (alert.isShow) {
     Alert.alert(
       "Errors",
       alert.msg,
       [
-        { text: "OK", onPress: () => dispatch({type:"CLOSE_ALERT"})}
+        { text: "OK", onPress: () => dispatch({ type: "CLOSE_ALERT" }) }
       ],
       { cancelable: false }
     );
@@ -162,10 +162,10 @@ export default function Main() {
   useEffect(() => {
 
     messaging().getToken()
-    .then(token => {
-      console.log("--token--");
-      console.log(token);
-    }); 
+      .then(token => {
+        console.log("--token--");
+        console.log(token);
+      });
 
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
@@ -175,16 +175,16 @@ export default function Main() {
   }, []);
 
   return (
-      <SafeAreaProvider>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
-            <Tab.Screen name="Home" component={HomeStackScreen}/>
-            <Tab.Screen name="마음산.책" component={JournalStackScreen}/>
-            <Tab.Screen name="마음살.책" component={ListStackScreen}/>
-            <Tab.Screen name="검색" component={SearchStackScreen}/>
-            <Tab.Screen name="HWTest" component={HWTest} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
+          <Tab.Screen name="Home" component={HomeStackScreen} />
+          <Tab.Screen name="마음산.책" component={JournalStackScreen} />
+          <Tab.Screen name="마음살.책" component={ListStackScreen} />
+          <Tab.Screen name="검색" component={SearchStackScreen} />
+          <Tab.Screen name="HWTest" component={HWTest} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }

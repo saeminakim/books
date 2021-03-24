@@ -9,7 +9,7 @@ import { addList, removeList } from '../redux/actions';
 
 import api from '../api/wishlist'
 
-const WishDetails = ({route, navigation}) => {
+const WishDetails = ({ route, navigation }) => {
 
   const { id } = route.params;
 
@@ -27,37 +27,37 @@ const WishDetails = ({route, navigation}) => {
     setItem(result.data);
   }, [])
 
-  useEffect(() =>{
+  useEffect(() => {
     getDetails();
   }, [])
 
 
-  return (  
-    <ScrollView style={{backgroundColor: '#eceef8'}}>
+  return (
+    <ScrollView style={{ backgroundColor: '#eceef8' }}>
       <Card>
-      <Card.Title style={styles.title}>{item.title}</Card.Title>  
-        <Avatar style={{width: 100, height: 130}} source={{uri:item.thumbnail}} />       
-          <Card.Divider style={{marginTop: 10}}/>
-          <Text>{item.contents}</Text>
+        <Card.Title style={styles.title}>{item.title}</Card.Title>
+        <Avatar style={{ width: 100, height: 130 }} source={{ uri: item.thumbnail }} />
+        <Card.Divider style={{ marginTop: 10 }} />
+        <Text>{item.contents}</Text>
         {
           isExistedList
-            ? 
-            <Button 
-              onPress={() => {dispatch(removeList(id))}}
+            ?
+            <Button
+              onPress={() => { dispatch(removeList(id)) }}
               type='clear'
-              icon={<Icon name='remove-circle-outline' type='ionicon' color='#2F3C7E'/>}
+              icon={<Icon name='remove-circle-outline' type='ionicon' color='#2F3C7E' />}
               title='  지우기'
-              buttonStyle={{marginTop: 10}}
-              titleStyle={{color: '#2F3C7E'}}
+              buttonStyle={{ marginTop: 10 }}
+              titleStyle={{ color: '#2F3C7E' }}
             />
             :
-            <Button 
-              onPress={() => {dispatch(addList(item))}}
+            <Button
+              onPress={() => { dispatch(addList(item)) }}
               type='clear'
-              icon={<Icon name='book-outline' type='ionicon' color='#2F3C7E'/>}
+              icon={<Icon name='book-outline' type='ionicon' color='#2F3C7E' />}
               title='  마음산.책으로'
-              buttonStyle={{marginTop: 10}}
-              titleStyle={{color: '#2F3C7E'}}
+              buttonStyle={{ marginTop: 10 }}
+              titleStyle={{ color: '#2F3C7E' }}
             />
         }
       </Card>

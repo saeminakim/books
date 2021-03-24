@@ -2,7 +2,7 @@ const actions = (state = [], action) => {
   switch (action.type) {
     case 'ADD_LIST_SUCCEEDED':
       return [
-        ...state, 
+        ...state,
         {
           ...action.payload
         }
@@ -17,11 +17,11 @@ const actions = (state = [], action) => {
       ]
     case 'UPDATE_LIST_SUCCEEDED':
       return [
-        ...state, 
+        ...state,
         {
           id: action.payload.id,
           post: action.payload.post
-        }            
+        }
       ]
     default:
       return state
